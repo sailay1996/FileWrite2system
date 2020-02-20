@@ -7,8 +7,7 @@
 `C:\Windows\System32\DriverStore\FileRepository\prnms003.inf_amd64_e4ff50d4d5f8b2aa\Amd64>cacls PrintConfig.dll /e /g everyone:f`
 
 <br>
-### This technique release from SandboxEscaper's ALPC Task Scheduler exploit and @decoder_it modified it simple as powershell script.
-<br><br>
+
 REF: https://decoder.cloud/2019/11/13/from-arbitrary-file-overwrite-to-system/
 
 <br>
